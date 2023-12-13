@@ -1,13 +1,18 @@
 ## 1-> Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
 ``
-SELECT `students`.`name`,`students`.`surname`,`students`.`registration_number`, `degrees`.`name`
+SELECT `students`.`name` AS `students_name`,`students`.`surname` AS `students_surname`,`students`.`registration_number`, `degrees`.`name` AS `degrees_name`
 FROM `students`
 JOIN `degrees`
 ON `students`.`degree_id` = `degrees`.`id`
 WHERE `degrees`.`name` = "Corso di Laurea in Economia";
 ``
 ## 2-> Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
-
+SELECT `departments`.`name` AS `departments_name`, `degrees`.`name` AS `degrees_name`, `degrees`.`level` 
+FROM `degrees`
+JOIN `departments`	
+ON `degrees`.`department_id` = `departments`.`id`
+WHERE `degrees`.`level` = "magistrale"
+AND `departments`.`name` = "Dipartimento di Neuroscienze";
 ## 3-> Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 
 ## 4-> Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
